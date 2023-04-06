@@ -78,6 +78,27 @@ var quizQuestions = [
     endScreen.removeAttribute('class', 'hidden');
     finalScore.textContent = secondsLeft;
 
+    submitBtn.addEventListener('click', storeHighscore);
   }
+
+  function storeHighscore() {
+    // Retrieve user's initials and score
+    var initialsValue = initials.value.trim();
+    var scoreValue = finalScore.textContent.trim();
+
+    // Validate user's input
+    if (initialsValue === '' || scoreValue === '') {
+        alert('Please enter your initials!');
+        return;
+    }
+
+    // Store user's initials and score in local storage
+    var highscores = JSON.parse(localStorage.getItem('highscores') || []);
+    highscores.push({ initials: initialsValue, score: scoreValue });
+    localStorage.setItem('highscores', JSON.stringify(highscores));
+
+    // Redirect user to highscores.html page
+    window.location.href = '.highscores.html';
+}
 
   startBtn.onclick = startQuiz;
