@@ -17,7 +17,7 @@ for (var i = 0; i < highscores.length; i++) {
 // Add event listener to "Go Back" button
 var goBackBtn = document.getElementById('go-back');
 goBackBtn.addEventListener('click', function() {
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 });
 
 // Add event listener to "Clear High Scores" button

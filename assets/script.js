@@ -7,7 +7,7 @@ var choices = document.getElementById('choices');
 var endScreen = document.getElementById('end-screen');
 var finalScore = document.getElementById('final-score');
 var initials = document.getElementById('initials');
-var submitBtn = document.getElementById('submit-btn');
+var submitBtn = document.getElementById('submit');
 var secondsLeft = 60;
 var questionIndex = 0;
 var timerInterval;
@@ -78,13 +78,14 @@ var quizQuestions = [
     endScreen.removeAttribute('class', 'hidden');
     finalScore.textContent = secondsLeft;
 
-    submitBtn.addEventListener('click', storeHighscore);
+    submitBtn.onclick = storeHighscore;
   }
 
   function storeHighscore() {
     // Retrieve user's initials and score
-    var initialsValue = initials.value.trim();
-    var scoreValue = finalScore.textContent.trim();
+    var initialsValue = initials.value;
+    var scoreValue = finalScore.textContent.toString();
+    console.log(initialsValue, scoreValue);
 
     // Validate user's input
     if (initialsValue === '' || scoreValue === '') {
@@ -93,12 +94,14 @@ var quizQuestions = [
     }
 
     // Store user's initials and score in local storage
-    var highscores = JSON.parse(localStorage.getItem('highscores') || []);
-    highscores.push({ initials: initialsValue, score: scoreValue });
+    var highscore = { initials: initialsValue, score: scoreValue };
+    var highscores = JSON.parse(localStorage.getItem('highscores') || '[]');
+    console.log(highscores);
+    highscores.push(highscore);
     localStorage.setItem('highscores', JSON.stringify(highscores));
 
     // Redirect user to highscores.html page
-    window.location.href = '.highscores.html';
+    window.location.href = './assets/highscores.html';
 }
 
   startBtn.onclick = startQuiz;
