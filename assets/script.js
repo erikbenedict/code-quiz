@@ -33,11 +33,11 @@ var quizQuestions = [
         time.textContent = secondsLeft;
         if (secondsLeft <= 0) {
             clearInterval(timerInterval);
+            quizEnd();
         }
     },
     1000
     )
-
     showQuestions();
   }
 
@@ -66,10 +66,18 @@ var quizQuestions = [
     choices.innerHTML = '';
     questionIndex++;
     if (questionIndex === quizQuestions.length) {
-        // TODO: call quiz end function here
+        quizEnd()
     } else {
     showQuestions();
     }
+  }
+
+  function quizEnd (){
+    clearInterval(timerInterval);
+    quiz.setAttribute('class', 'hidden');
+    endScreen.removeAttribute('class', 'hidden');
+    finalScore.textContent = secondsLeft;
+
   }
 
   startBtn.onclick = startQuiz;
