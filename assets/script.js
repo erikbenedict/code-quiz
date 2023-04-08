@@ -4,10 +4,12 @@ var startBtn = document.getElementById('start-btn');
 var quiz = document.getElementById('quiz');
 var questionTitle = document.getElementById('question-title');
 var choices = document.getElementById('choices');
+var result = document.getElementById('result');
 var endScreen = document.getElementById('end-screen');
 var finalScore = document.getElementById('final-score');
 var initials = document.getElementById('initials');
 var submitBtn = document.getElementById('submit');
+var initialsError = document.getElementById('initials-error');
 var secondsLeft = 60;
 var questionIndex = 0;
 var timerInterval;
@@ -15,13 +17,28 @@ var timerInterval;
 var quizQuestions = [
     {
       title: "Commonly used data types DO NOT include:",
-      choices: ["strings", "booleans", "alerts", "numbers"],
-      answer: "alerts"
+      choices: ["Strings", "Booleans", "Alerts", "Numbers"],
+      answer: "Alerts"
     },
     {
       title: "The condition in an if / else statement is enclosed within ____.",
-      choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-      answer: "parentheses"
+      choices: ["Quotes", "Curly Brackets", "Parentheses", "Square Brackets"],
+      answer: "Parentheses"
+    },
+    {
+      title: "JavaScript is a ___-side programming language",
+      choices: ["Client", "Server", "Both", "None"],
+      answer: "Both"
+    },
+    {
+      title: "How would you find the minimum of x and y using JavaScript?",
+      choices: ["min(x,y);", "Math.min(x,y)", "Math.min(xy)", "min(xy);"],
+      answer: "Math.min(x,y)"
+    },
+    {
+      title: "Which of the following will write the message “Whoopsie-daisy!” in an alert box?",
+      choices: ["alertBox(“Whoopsie-daisy!”);”;", "alert(Whoopsie-daisy!);", "msgAlert(“Whoopsie-daisy!”);", "alert(“Whoopsie-daisy!”);"],
+      answer: "alert(“Whoopsie-daisy!”);"
     }
   ]
 
@@ -57,9 +74,9 @@ var quizQuestions = [
 
   function checkAnswer () {
     if (this.value === quizQuestions[questionIndex].answer) {
-        console.log('Correct');
+        result.textContent = 'Correct! 🤠';
     } else {
-        console.log('Wrong');
+      result.textContent = 'Wrong 😣';
         secondsLeft -= 10;
         time.textContent = secondsLeft;
     }
@@ -83,21 +100,18 @@ var quizQuestions = [
 
   function storeHighscore() {
     // Retrieve user's initials and score
-    var initialsValue = initials.value;
-    var scoreValue = finalScore.textContent.toString();
-    console.log(initialsValue, scoreValue);
+    var initialsValue = initials.value.trim();
+    var scoreValue = finalScore.textContent.toString().trim();
 
     // Validate user's input
-    if (initialsValue === '' || scoreValue === '') {
-        alert('Please enter your initials!');
+    if (initialsValue === '') {
+        initialsError.textContent = 'Please enter your initials!';
         return;
     }
 
     // Store user's initials and score in local storage
-    var highscore = { initials: initialsValue, score: scoreValue };
     var highscores = JSON.parse(localStorage.getItem('highscores') || '[]');
-    console.log(highscores);
-    highscores.push(highscore);
+    highscores.push({ initials: initialsValue, score: scoreValue });
     localStorage.setItem('highscores', JSON.stringify(highscores));
 
     // Redirect user to highscores.html page
