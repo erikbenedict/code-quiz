@@ -7,7 +7,7 @@ highScores.sort(function(a, b) {
 });
 
 // * Loop through high scores and display each user's initials and score
-var highScoresList = document.querySelector('ul');
+var highScoresList = document.querySelector('ol');
 for (var i = 0; i < highScores.length; i++) {
     var li = document.createElement('li');
     li.textContent = 'Initials: ' + highScores[i].initials + ', Score: ' + highScores[i].score;

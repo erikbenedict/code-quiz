@@ -117,8 +117,6 @@ header {
 }
 
 #choices button {
-    display: flex;
-    justify-content: center;
     text-align: center;
     background-color: var(--dark);
     color: white;
@@ -166,5 +164,28 @@ header {
     box-shadow: var(--box-shadow)
 }
 
-/* ! highscores.html ! */
+/* ! high-scores.html ! */
 
+.high-scores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--dark);
+    background: linear-gradient(180deg, rgba(23,42,58,1) 0%, rgba(76,83,77,1) 57%, var(--dark) 100%);
+    width: 80%;
+    padding: .5rem;
+    margin: 0 auto;
+}
+
+.high-scores ol {
+    margin: .5rem;
+}
+
+.high-scores button {
+    background-color: var(--highlight);
+    font-weight: 800;
+    text-align: center;
+    padding: .25rem;
+    margin-bottom: .5rem;
+    box-shadow: var(--box-shadow)
+}
