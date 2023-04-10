@@ -60,14 +60,14 @@ header {
 
 }
 
-.scores-container a {
+.scores-link {
     text-decoration: none;
     color: var(--header-text);
     padding: .15rem .5rem;
     transition: color 0.2s;
 }
 
-.scores-container a:hover {
+.scores-link:hover {
     color: var(--dark);
     background: var(--header-text);
 }
@@ -77,7 +77,7 @@ header {
     padding: .15rem .5rem;
 }
 
-.timer span {
+#time-remaining {
     color: var(--highlight);
 }
 
