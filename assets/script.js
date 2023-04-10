@@ -36,9 +36,9 @@ var quizQuestions = [
       answer: "Math.min(x,y)"
     },
     {
-      title: "Which of the following will write the message “Whoopsie-daisy!” in an alert box?",
-      choices: ["alertBox(“Whoopsie-daisy!”);”;", "alert(Whoopsie-daisy!);", "msgAlert(“Whoopsie-daisy!”);", "alert(“Whoopsie-daisy!”);"],
-      answer: "alert(“Whoopsie-daisy!”);"
+      title: "Which of the following function of Array object removes the first element from an array and returns that element?",
+      choices: ["reverse()", "shift()", "slice()", "some()"],
+      answer: "shift()"
     }
   ]
 
