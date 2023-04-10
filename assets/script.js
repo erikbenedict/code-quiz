@@ -93,6 +93,7 @@ var quizQuestions = [
     clearInterval(timerInterval);
     quiz.setAttribute('class', 'hidden');
     endScreen.removeAttribute('class', 'hidden');
+    endScreen.setAttribute('style', 'display: flex');
     finalScore.textContent = secondsLeft;
 
     submitBtn.onclick = storeHighscore;
