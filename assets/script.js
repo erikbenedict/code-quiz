@@ -36,9 +36,9 @@ var quizQuestions = [
       answer: "Math.min(x,y)"
     },
     {
-      title: "Which of the following will write the message “Whoopsie-daisy!” in an alert box?",
-      choices: ["alertBox(“Whoopsie-daisy!”);”;", "alert(Whoopsie-daisy!);", "msgAlert(“Whoopsie-daisy!”);", "alert(“Whoopsie-daisy!”);"],
-      answer: "alert(“Whoopsie-daisy!”);"
+      title: "Which of the following function of Array object removes the first element from an array and returns that element?",
+      choices: ["reverse()", "shift()", "slice()", "some()"],
+      answer: "shift()"
     }
   ]
 
@@ -93,12 +93,13 @@ var quizQuestions = [
     clearInterval(timerInterval);
     quiz.setAttribute('class', 'hidden');
     endScreen.removeAttribute('class', 'hidden');
+    endScreen.setAttribute('style', 'display: flex');
     finalScore.textContent = secondsLeft;
 
-    submitBtn.onclick = storeHighscore;
+    submitBtn.onclick = storeHighScore;
   }
 
-  function storeHighscore() {
+  function storeHighScore() {
     // Retrieve user's initials and score
     var initialsValue = initials.value.trim();
     var scoreValue = finalScore.textContent.toString().trim();
@@ -110,12 +111,12 @@ var quizQuestions = [
     }
 
     // Store user's initials and score in local storage
-    var highscores = JSON.parse(localStorage.getItem('highscores') || '[]');
-    highscores.push({ initials: initialsValue, score: scoreValue });
-    localStorage.setItem('highscores', JSON.stringify(highscores));
+    var highScores = JSON.parse(localStorage.getItem('highScores') || '[]');
+    highScores.push({ initials: initialsValue, score: scoreValue });
+    localStorage.setItem('highScores', JSON.stringify(highScores));
 
-    // Redirect user to highscores.html page
-    window.location.href = './assets/highscores.html';
+    // Redirect user to highScores.html page
+    window.location.href = './assets/high-scores.html';
 }
 
   startBtn.onclick = startQuiz;

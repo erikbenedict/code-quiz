@@ -9,30 +9,35 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <header class="header">
-        <div class="scores-container">
-            <a href="./assets/highscores.html" class="highscores">View high scores</a>
+    <div class="container">
+        <header class="header">
+            <div class="scores-container">
+                <a href="./assets/high-scores.html" class="scores-link">View high scores</a>
+            </div>
+            <div class="timer">
+                Time: <span id="time-remaining">60</span>
+            </div>
+        </header>
+        <div id="start-screen">
+            <div class="start-title">
+                <h1>Code Quiz Challenge</h1>
+            </div>
+            <p>Answer the following coding questions within the time-limit. Your score will be the time remaining when the quiz has ended <br><br>
+            Keep in mind that answering incorrectly will penalize your score/time by ten seconds!</p> 
+            <button id="start-btn">Start!</button>
         </div>
-        <div class="timer">
-            Time: <span id="time-remaining"></span>
+        <div id="quiz" class="hidden">
+            <div id="question-title"></div>
+            <div id="choices"></div>
+            <div id="result"></div>
         </div>
-    </header>
-    <div id="start-screen">
-        <h1>Code Quiz Challenge</h1>
-        <p>Answer the following coding questions within the time-limit.<br>Keep in mind that answering incorrectly will penalize your score/time by ten seconds!</p> 
-        <button id="start-btn">Start!</button>
-    </div>
-    <div id="quiz" class="hidden">
-        <div id="question-title"></div>
-        <div id="choices"></div>
-        <div id="result"></div>
-    </div>
-    <div id="end-screen" class="hidden">
-        <h2>Finished!</h2>
-        <p>Your final score <span id="final-score"></span></p>
-        <input type="text" id="initials" placeholder="Enter Initials">
-        <button id="submit">Submit</button>
-        <div id="initials-error"></div>
+        <div id="end-screen" class="hidden">
+            <h2>🎊Finished!🎊</h2>
+            <p>Your final score: <span id="final-score"></span></p>
+            <input type="text" id="initials" placeholder="Enter Initials">
+            <button id="submit">Submit</button>
+            <div id="initials-error"></div>
+        </div>
     </div>
     <script src="./assets/script.js"></script>
 </body>
