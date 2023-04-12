@@ -1,4 +1,4 @@
-// * Parse high scores from local storage or create empty array
+// * Parse high scores from local storage
 var highScores = JSON.parse(localStorage.getItem('highScores') || '[]');
 
 // * Sort high scores in descending order
@@ -14,13 +14,13 @@ for (var i = 0; i < highScores.length; i++) {
     highScoresList.appendChild(li);
 }
 
-// * Add event listener to "Go Back" button
+// * "Go Back" button redirects users to index.html page
 var goBackBtn = document.getElementById('go-back');
 goBackBtn.addEventListener('click', function() {
     window.location.href = '../index.html';
 });
 
-// * Add event listener to "Clear High Scores" button
+// * "Clear High Scores" button clears high scores from local storage
 var clearBtn = document.getElementById('clear');
 clearBtn.addEventListener('click', function() {
     localStorage.removeItem('highScores');
