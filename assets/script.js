@@ -14,6 +14,7 @@ var secondsLeft = 60;
 var questionIndex = 0;
 var timerInterval;
 
+// * quiz questions, choices, and answers 
 var quizQuestions = [
     {
       title: "Commonly used data types DO NOT include:",
@@ -42,6 +43,7 @@ var quizQuestions = [
     }
   ]
 
+  // * start quiz and timer when user clicks start button
   function startQuiz() {
     startScreen.setAttribute('class', 'hidden');
     quiz.removeAttribute('class', 'hidden');
@@ -58,6 +60,7 @@ var quizQuestions = [
     showQuestions();
   }
 
+  // * show current question and choices
   function showQuestions() {
     var currentQuestion = quizQuestions[questionIndex];
     questionTitle.textContent = currentQuestion.title
@@ -72,6 +75,7 @@ var quizQuestions = [
     )
   }
 
+  // * check user's answer and updates the time/score left accordingly
   function checkAnswer () {
     if (this.value === quizQuestions[questionIndex].answer) {
         result.textContent = 'Correct! 🤠';
@@ -89,6 +93,7 @@ var quizQuestions = [
     }
   }
 
+  // * end quiz when time runs out or all questions are answered
   function quizEnd (){
     clearInterval(timerInterval);
     quiz.setAttribute('class', 'hidden');
@@ -99,23 +104,21 @@ var quizQuestions = [
     submitBtn.onclick = storeHighScore;
   }
 
+  // * stores user's initials and score in local storage
   function storeHighScore() {
-    // Retrieve user's initials and score
     var initialsValue = initials.value.trim();
     var scoreValue = finalScore.textContent.toString().trim();
 
-    // Validate user's input
     if (initialsValue === '') {
         initialsError.textContent = 'Please enter your initials!';
         return;
     }
 
-    // Store user's initials and score in local storage
     var highScores = JSON.parse(localStorage.getItem('highScores') || '[]');
     highScores.push({ initials: initialsValue, score: scoreValue });
     localStorage.setItem('highScores', JSON.stringify(highScores));
 
-    // Redirect user to highScores.html page
+    //* Redirect user to high-scores.html page
     window.location.href = './assets/high-scores.html';
 }
 
